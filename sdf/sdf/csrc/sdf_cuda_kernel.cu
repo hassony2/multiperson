@@ -288,8 +288,9 @@ __global__ void sdf_cuda_kernel(
             num_intersect++;
         }
     }
+    // If outside of mesh, make negative distance
     if (num_intersect % 2 == 0) {
-        min_distance = 0.;
+        min_distance *= - 1;
     }
     // if (num_intersect % 2 == 1) {
     //     min_distance *= -1;
